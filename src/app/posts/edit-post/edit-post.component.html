@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12">
+        <form [formGroup]="postForm" (ngSubmit)="onUpdatePost()">
+            <h3>Update Post</h3>
+            <hr />
+            <div class="mb-3">
+                <label for="title" class="form-label">
+                    Title
+                </label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Enter the title."
+                    formControlName="title" />
+                    <div *ngIf="postForm.get('title')?.touched && !postForm.get('title')?.valid">
+                        {{showTitleErrors()}}
+                    </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">
+                    Description
+                </label>
+                <textarea name="description" id="description" class="form-control"
+                    placeholder="Provide some info on the title." formControlName="description"></textarea>
+                    <div *ngIf="postForm.get('description')?.touched && !postForm.get('description')?.valid">
+                        {{showDescriptionErrors()}}
+                    </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" [disabled]="!postForm.valid">
+                    Update Post
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
